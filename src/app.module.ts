@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { EnvConfiguration } from './config/env.config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -16,7 +17,8 @@ import { UsersModule } from './users/users.module';
       dbName: process.env.MONGO_DB,
     }),
     WsModule,
-    UsersModule
+    UsersModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],

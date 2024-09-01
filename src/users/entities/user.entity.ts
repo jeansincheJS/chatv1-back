@@ -25,7 +25,7 @@ export class User extends Document {
 
     @Prop({
         type: Boolean,
-        default: false,
+        default: true,
     })
     isActive: boolean;
 
