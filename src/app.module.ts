@@ -13,12 +13,12 @@ import { AuthModule } from './auth/auth.module';
     ConfigModule.forRoot({
       load: [EnvConfiguration],
     }),
-    MongooseModule.forRoot(process.env.MONGO_URL, {
-      dbName: process.env.MONGO_DB,
-    }),
+    // MongooseModule.forRoot(process.env.MONGO_URL, {
+    //   dbName: process.env.MONGO_DB,
+    // }),
     WsModule,
-    UsersModule,
-    AuthModule
+    // UsersModule,
+    // AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
