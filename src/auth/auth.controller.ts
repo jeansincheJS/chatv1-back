@@ -3,7 +3,9 @@ import { AuthService } from './auth.service';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import { AuthGuard } from '@nestjs/passport';
-
+import { GetUser, RawHeaders } from './decorators';
+import { User } from 'src/users/entities/user.entity';
+import { IncomingHttpHeaders } from 'http';
 
 @Controller('auth')
 export class AuthController {
@@ -22,10 +24,16 @@ export class AuthController {
   @Get('private')
   @UseGuards(AuthGuard())
   testingPrivateRoute(
+    @GetUser() user: User,
+    @GetUser('email') userEmail: string,
+    @RawHeaders() rawHeaders: string[],
+    @Headers() headers: IncomingHttpHeaders,
   ) {
     return {
-      ok: 'fino'
+      user,
+      userEmail,
+      rawHeaders,
+      headers,
     }
   }
-
 }
